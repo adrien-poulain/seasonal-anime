@@ -3,14 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>Seasonal Anime</title>
-        <link rel='stylesheet' type='text/css' href="{{ asset('css/index.css') }}" >
+        <link rel="icon" href="{{ asset('logo/icon.ico') }}" type="image/ico">
+        <link rel='stylesheet' href="{{ asset('css/index.css') }}" >
         {% block stylesheets %}{% endblock %}
         <script type='text/javascript' src="{{ asset('js/import/font-awesome-icons.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </head>
     <body>
         <header>
-            <i class="fa-solid fa-truck-front fa-lg"></i>
+            <div id="top-left">
+                <img width="80" src="{{ asset('logo/logo-no-bg.webp') }}">
+                <p id="title">Seasonal Anime</p>
+            </div>
+            <a id="login-admin" href="#">
+                <i class="fa-solid fa-user"></i>
+            </a>
         </header>
         {% block body %}{% endblock %}
     </body>

@@ -1,2 +1,36 @@
 @import url('./colors.css');
 @import url('./import/font-awesome-icons.min.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color5);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header #top-left {
+    display: flex;
+    align-items: center;
+    
+}
+
+#login-admin {
+    text-decoration: none;
+    color: var(--color3);
+    padding: 8px 10px;
+    border: 1px solid var(--color1);
+    background-color: var(--color1);
+    border-radius: 5px;
+    align-self: center;
+    margin-right: 15px;
+}
+
+#login-admin:hover {
+    border-color: var(--color2);
+    background-color: var(--color2);
+    color: var(--white);
+}
