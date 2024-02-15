@@ -1,24 +1,58 @@
 @import url('./colors.css');
 @import url('./import/font-awesome-icons.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+* {
+    font-family: "Fredoka", sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--white) !important;
+    outline: none !important;
+}
 
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--color5);
+    background-color: var(--color6);
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    background-color: var(--color5);
 }
 
 header #top-left {
     display: flex;
     align-items: center;
-    
+}
+
+header #title {
+    margin: 0;
+    font-size: 23px;
+    color: var(--color3);
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+header #logged {
+    align-self: center;
+    margin-right: 20px;
+}
+
+header #logged #access-dashboard {
+    margin-right: 10px;
 }
 
 #login-admin {
+    margin-right: 20px;
+}
+
+#login-admin,
+#logout-admin,
+#access-dashboard {
     text-decoration: none;
     color: var(--color3);
     padding: 8px 10px;
@@ -26,11 +60,19 @@ header #top-left {
     background-color: var(--color1);
     border-radius: 5px;
     align-self: center;
-    margin-right: 15px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-#login-admin:hover {
+#login-admin:hover,
+#logout-admin:hover,
+#access-dashboard:hover{
     border-color: var(--color2);
     background-color: var(--color2);
     color: var(--white);
+}
+
+.required::after {
+    content: "*";
+    color: var(--red);
 }

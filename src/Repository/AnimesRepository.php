@@ -20,6 +20,14 @@ class AnimesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Animes::class);
     }
+    
+    public function countAll(): int
+    {
+        return $this->createQueryBuilder('a')
+            ->select('count(a.anime_id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
 //    /**
 //     * @return Animes[] Returns an array of Animes objects

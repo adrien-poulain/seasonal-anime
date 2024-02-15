@@ -1,0 +1,39 @@
+#login ul {
+    list-style: none;
+    padding: 15px;
+    margin: 0;
+}
+
+#login ul li:not(#submit) {
+    display: grid;
+    row-gap: 3px;
+    margin-bottom: 5px;
+}
+
+#login ul li:not(#submit) label{
+    font-size: 15px;
+    color: var(--color3);
+}
+
+#login ul li:not(#submit) input {
+    padding: 7px;
+    font-size: 14px;
+    color: var(--color3);
+    border: 1px solid var(--color4);
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#login ul li#submit {
+    text-align: end;
+}
+
+#login ul li#submit button {
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    color: var(--white);
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}

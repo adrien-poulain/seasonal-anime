@@ -7,17 +7,29 @@
         <link rel='stylesheet' href="{{ asset('css/index.css') }}" >
         {% block stylesheets %}{% endblock %}
         <script type='text/javascript' src="{{ asset('js/import/font-awesome-icons.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/import/htmx.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/import/jQuery.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </head>
     <body>
+        <div id="modal-place"></div>
         <header>
             <div id="top-left">
                 <img width="80" src="{{ asset('logo/logo-no-bg.webp') }}">
-                <p id="title">Seasonal Anime</p>
+                <a href="{{ path('home') }}" id="title">Seasonal Anime</a>
             </div>
-            <a id="login-admin" href="#">
-                <i class="fa-solid fa-user"></i>
-            </a>
+            {% if not app.session.get('user') %}
+                <button id="login-admin" hx-get="{{ path('login') }}" hx-target="#modal-place">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            {% else %}
+                <div id="logged">
+                    <a id="access-dashboard" href="{{ path('admin_panel') }}">Tableau de bord</a>
+                    <a title="Se Déconnecter" id="logout-admin" href="{{ path('logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
+            {% endif %}
         </header>
         {% block body %}{% endblock %}
     </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Seasonal Anime</title>
+        <link rel="icon" href="{{ asset('logo/icon.ico') }}" type="image/ico">
+        <link rel='stylesheet' href="{{ asset('css/admin.css') }}" >
+        {% block stylesheets %}{% endblock %}
+        <script type='text/javascript' src="{{ asset('js/import/font-awesome-icons.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/import/htmx.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/import/jQuery.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        <div id="modal-place"></div>
+        <div id="content">
+            <header>
+                <div id="top-left">
+                    <img width="80" src="{{ asset('logo/logo-no-bg.webp') }}">
+                    <a href="{{ path('admin_panel') }}" id="title">Tableau de bord</a>
+                </div>
+                <div id="top-right">
+                    <a href="{{ path('home') }}">Accueil</a>
+                    <a href="{{ path('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+            </header>
+            <div id="page">
+                <div id="menu">
+                    <a class="{{(app.request.attributes.get('_route') == 'admin_panel') ? 'active' : ''}}" href="{{ path('admin_panel') }}"><i class="fa-solid fa-house"></i> Accueil</a>
+                    <a class="{{(app.request.attributes.get('_route') == 'admin_users') ? 'active' : ''}}" href="{{ path('admin_users') }}"><i class="fa-solid fa-users"></i> Administrateurs</a>
+                    <a class="{{(app.request.attributes.get('_route') == 'admin_seasons') ? 'active' : ''}}" href="{{ path('admin_seasons') }}"><i class="fa-brands fa-canadian-maple-leaf"></i> Saisons</a>
+                    <a class="{{(app.request.attributes.get('_route') == 'admin_animes') ? 'active' : ''}}" href="{{ path('admin_animes') }}"><i class="fa-solid fa-film"></i> Animes</a>
+                </div>
+                <div id="menu-content">
+                {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

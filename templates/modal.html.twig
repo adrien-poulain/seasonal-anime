@@ -1,0 +1,28 @@
+<div id="modal">
+    {% block modalcss %}{% endblock %}
+    <link rel='stylesheet' href="{{ asset('css/modal.css') }}" >
+    {% block modaljs %}{% endblock %}  
+    <script type='text/javascript' src="{{ asset('js/modal.js') }}"></script>
+    <div id="modal-header">
+        {% block modalheader %}{% endblock %}
+    </div>
+    <div id="modal-content">
+        {% block modalcontent %}{% endblock %}
+        {# <form id="login">
+            <ul>
+                <li>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" />
+                </li>
+                <li>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" />
+                </li>
+                <li id="submit">
+                    <button type="submit">Se connecter</button>
+                </li>
+            </ul>
+        </form> #}
+    </div>
+</div>
+<div id="modal-overlay"></div>

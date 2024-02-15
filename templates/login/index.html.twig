@@ -1,0 +1,25 @@
+{% extends 'modal.html.twig' %}
+{% block modalcss %}
+    <link rel='stylesheet' href="{{ asset('css/login.css') }}" >
+{% endblock %}
+{% block modalheader %}
+    <i class="fa-solid fa-user"></i>
+    <p id="title">Se connecter</p>
+{% endblock %}
+{% block modalcontent %}
+    <form id="login" method="POST" action="{{ path('login') }}">
+        <ul>
+            <li>
+                <label class="required" for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Votre pseudonyme ..." required/>
+            </li>
+            <li>
+                <label class="required" for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" placeholder="Votre mot de passe ..." required/>
+            </li>
+            <li id="submit">
+                <button type="submit">Se connecter</button>
+            </li>
+        </ul>
+    </form>
+{% endblock %}
