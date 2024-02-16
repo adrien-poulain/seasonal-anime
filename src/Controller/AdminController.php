@@ -9,13 +9,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Entity\Animes;
 use App\Entity\Seasons;
+use App\Entity\User;
 
 class AdminController extends AbstractController
 {
     public function __construct(EntityManagerInterface $em, RequestStack $rs)
     {
         $this->bdd = $em;
-        $this->request = $rs;
+        $this->request = $rs->getCurrentRequest();
+        $this->session = $rs->getSession();
     }
 
     #[Route('/dashboard', name: 'admin_panel')]
@@ -30,7 +32,16 @@ class AdminController extends AbstractController
     #[Route('/dashboard/users', name: 'admin_users')]
     public function admin_users(): Response
     {
-        return $this->render('admin/users/index.html.twig');
+        if($this->request->request->all()) {
+            $user = new User();
+            $user->setUsername($this->request->get('username'));
+            $user->setPassword($this->request->get('password'));
+            $this->bdd->getRepository(User::class)->save($user);
+        }
+        $variables = [
+            "users" => $this->bdd->getRepository(User::class)->findAll()
+        ];
+        return $this->render('admin/users/index.html.twig', $variables);
     }
 
     #[Route('/dashboard/seasons', name: 'admin_seasons')]

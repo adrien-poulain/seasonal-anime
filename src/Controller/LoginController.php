@@ -44,18 +44,4 @@ class LoginController extends AbstractController
         $this->session->set('user', null);
         return $this->redirectToRoute('home');
     }
-    
-    // #[Route('/register', name: 'register')]
-    // public function register(): Response
-    // {
-    //     if($this->request->request->all()) {
-    //         $user = new User();
-    //         $user->setUsername($this->request->get('username'));
-    //         $user->setPassword($this->request->get('password'));
-    //         dump($user);
-    //         $this->bdd->getRepository(User::class)->save($user);
-
-    //     }
-    //     return $this->render('login/register.html.twig');
-    // }
 }

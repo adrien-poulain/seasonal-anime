@@ -1,4 +1,35 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
+    <div id="users-page">
+        <div id="table-users">
+            <div id="table-header">
+                <p>#</p>
+                <p>username</p>
+            </div>
+            <div id="table-content">
+                {% for user in users %}
+                    <div id="table-row">
+                        <p>{{ user.userId }}</p>
+                        <p>{{ user.username }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <form id="addUser" method="POST">
+            <ul>
+                <li>
+                    <label class="required" for="username">Username:</label>
+                    <input type="text" name="username" required/>
+                </li>
+                <li>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" name="password" required/>
+                </li>
+                <li id="submit">
+                    <button type="submit">Ajouter</button>
+                </li>
+            </ul>
+        </form>
+    </div>
 {% endblock %}

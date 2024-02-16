@@ -161,3 +161,97 @@ header #title {
     text-align: center;
     margin-top: 10px;
 }
+
+/* USER PART */
+#users-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#table-users {
+    width: fit-content;
+    margin: 15px;
+    border: 1px solid var(--color4);
+    border-radius: 5px;
+}
+
+#table-users #table-header,
+#table-users #table-row {
+    display: grid;
+    grid-template-columns: 
+        minmax(70px, 100px)
+        minmax(150px, 200px);
+    align-items: center;
+    border-bottom: 1px solid var(--color4);
+}
+
+#table-users #table-header {
+    background-color: var(--color1);
+}
+
+#table-users #table-header p {
+    color: var(--white);
+}
+
+#table-users > div p {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    color: var(--color3);
+    border-right: 1px solid var(--color4);
+}
+
+#table-users > div:last-child,
+#table-users #table-header p:last-child,
+#table-users #table-row:last-child,
+#table-users #table-row p:last-child{
+    border: none;
+}
+
+#addUser {
+    margin: 15px;
+}
+
+#addUser ul {
+    list-style: none;
+    padding: 15px;
+    margin: 0;
+    background-color: var(--color5);
+    border: 1px solid var(--color4);
+    border-radius: 5px;
+}
+
+#addUser ul li:not(#submit) {
+    display: grid;
+    row-gap: 3px;
+    margin-bottom: 5px;
+}
+
+#addUser ul li:not(#submit) label{
+    font-size: 15px;
+    color: var(--color3);
+}
+
+#addUser ul li:not(#submit) input {
+    padding: 7px;
+    font-size: 14px;
+    color: var(--color3);
+    border: 1px solid var(--color4);
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#addUser ul li#submit {
+    text-align: end;
+}
+
+#addUser ul li#submit button {
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    color: var(--white);
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
