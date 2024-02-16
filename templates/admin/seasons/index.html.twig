@@ -1,4 +1,33 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
+    <div id="seasons-page">
+        <button id="add-season" hx-target="#modal-place" hx-get="{{ path('admin_seasons_add') }}">Nouvelle saison</button>
+        <div id="table">
+            <div id="table-header">
+                <p>#</p>
+                <p>Intitulé</p>
+                <p>Date de début</p>
+                <p>Date de dernière mise à jour</p>
+                <p>Actions</p>
+            </div>
+            <div id="table-content">
+                {% if seasons is defined and seasons|length > 0 %}
+                    {% for season in seasons %}
+                        <div id="table-row">
+                            <p>{{ season.id }}</p>
+                            <p>{{ season.libelle }}</p>
+                            <p>{{ season.start|date('d/m/Y') }}</p>
+                            <p>{{ season.updatedAt|date('d/m/Y H:i') }}</p>
+                            <div id="row-actions">
+                                <a href="{{ path('admin_seasons_edit' , {'seasonId' : season.id}) }}" id="edit-season"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p id="empty-table">Aucune saison</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

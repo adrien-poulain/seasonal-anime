@@ -1,0 +1,26 @@
+{% extends 'modal.html.twig' %}
+{% block modalcss %}
+    <link rel='stylesheet' href="{{ asset('css/admin.css') }}" >
+{% endblock %}
+{% block modalheader %}
+    <i class="fa-brands fa-canadian-maple-leaf"></i>
+    <p id="title">Nouvelle saison</p>
+{% endblock %}
+{% block modalcontent %}
+    <form id="seasons-add" method="POST" action="{{ path('admin_seasons_add') }}">
+        <ul>
+            <li>
+                <label class="required" for="libelle">Intitulé:</label>
+                <input type="text" id="libelle" name="libelle" placeholder="Votre intitulé ..." required/>
+            </li>
+            <li>
+                <label class="required" for="start">Date de début:</label>
+                <input type="date" id="start" name="start" required/>
+            </li>
+            <li id="submit">
+                <button type="submit">Créer</button>
+            </li>
+        </ul>
+    </form>
+{% endblock %}
+    

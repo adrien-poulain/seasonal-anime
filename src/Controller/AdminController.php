@@ -47,7 +47,58 @@ class AdminController extends AbstractController
     #[Route('/dashboard/seasons', name: 'admin_seasons')]
     public function admin_seasons(): Response
     {
-        return $this->render('admin/seasons/index.html.twig');
+        $variables = [
+            'seasons' => $this->bdd->getRepository(Seasons::class)->findAll(),
+        ];
+        return $this->render('admin/seasons/index.html.twig', $variables);
+    }
+
+    #[Route('/dashboard/seasons/add', name: 'admin_seasons_add')]
+    public function admin_seasons_add(): Response
+    {
+        if($this->request->request->all()) {
+            $season = new Seasons();
+            $season->setLibelle($this->request->get('libelle'));
+            $season->setStart(new \DateTime($this->request->get('start')));
+            $season->setUpdatedAt(new \DateTime('now'));
+            $this->bdd->getRepository(Seasons::class)->save($season);
+            return $this->redirectToRoute('admin_seasons');
+        }
+        return $this->render('admin/seasons/add.html.twig');
+    }
+
+    #[Route('/dashboard/seasons/{seasonId}/edit', name: 'admin_seasons_edit')]
+    public function admin_seasons_edit(int $seasonId): Response
+    {
+        $season = $this->bdd->getRepository(Seasons::class)->find($seasonId);
+        if($this->request->request->all()) {
+            $season->setLibelle($this->request->get('libelle'));
+            $season->setStart(new \DateTime($this->request->get('start')));
+            $season->setUpdatedAt(new \DateTime('now'));
+            $this->bdd->getRepository(Seasons::class)->save($season);
+        }
+        $variables = [
+            "season" => $season,
+        ];
+        return $this->render('admin/seasons/edit.html.twig', $variables);
+    }
+    #[Route('/dashboard/seasons/{seasonId}/add-anime', name: 'admin_seasons_add_anime')]
+    public function admin_seasons_add_anime(int $seasonId): Response
+    {
+        $season = $this->bdd->getRepository(Seasons::class)->find($seasonId);
+        
+        $variables = [
+            "season" => $season,
+        ];
+        return $this->render('admin/seasons/addAnime.html.twig', $variables);
+    }
+
+    #[Route('/dashboard/seasons/{seasonId}/delete', name: 'admin_seasons_delete')]
+    public function admin_seasons_delete(int $seasonId): Response
+    {
+        $season = $this->bdd->getRepository(Seasons::class)->find($seasonId);
+        $this->bdd->getRepository(Seasons::class)->remove($season);
+        return $this->redirectToRoute('admin_seasons');
     }
 
     #[Route('/dashboard/animes', name: 'admin_animes')]

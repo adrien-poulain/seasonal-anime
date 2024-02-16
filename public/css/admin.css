@@ -169,32 +169,54 @@ header #title {
     justify-content: space-around;
 }
 
-#table-users {
+#table {
     width: fit-content;
     margin: 15px;
     border: 1px solid var(--color4);
     border-radius: 5px;
 }
 
-#table-users #table-header,
-#table-users #table-row {
+#seasons-page #table {
+    width: auto;
+}
+
+#table #table-content #empty-table {
+    border-right: none;
+}
+
+#table #table-header,
+#table #table-row {
     display: grid;
-    grid-template-columns: 
-        minmax(70px, 100px)
-        minmax(150px, 200px);
     align-items: center;
     border-bottom: 1px solid var(--color4);
 }
 
-#table-users #table-header {
+#users-page #table #table-header,
+#users-page #table #table-row {
+    grid-template-columns: 
+        minmax(70px, 100px)
+        minmax(150px, 200px);
+}
+
+#seasons-page #table #table-header,
+#seasons-page #table #table-row {
+    grid-template-columns: 
+        minmax(70px, 100px)
+        minmax(70px, 1fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr)
+        minmax(100px,150px);
+}
+
+#table #table-header {
     background-color: var(--color1);
 }
 
-#table-users #table-header p {
+#table #table-header p {
     color: var(--white);
 }
 
-#table-users > div p {
+#table > div p {
     margin: 0;
     padding: 10px;
     text-align: center;
@@ -202,18 +224,46 @@ header #title {
     border-right: 1px solid var(--color4);
 }
 
-#table-users > div:last-child,
-#table-users #table-header p:last-child,
-#table-users #table-row:last-child,
-#table-users #table-row p:last-child{
+#table > div:last-child,
+#table #table-header p:last-child,
+#table #table-row:last-child,
+#table #table-row p:last-child{
     border: none;
+}
+
+#table #table-row #row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#table #table-row #row-actions button,
+#table #table-row #row-actions a{
+    margin-right: 5px;
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#table #table-row #row-actions button:hover,
+#table #table-row #row-actions a:hover {
+    background-color: var(--color8);
+    border-color: var(--color8);
+}
+
+#table #table-row #row-actions > *:last-child {
+    margin-right: 0;
 }
 
 #addUser {
     margin: 15px;
 }
 
-#addUser ul {
+#addUser ul{
     list-style: none;
     padding: 15px;
     margin: 0;
@@ -222,18 +272,32 @@ header #title {
     border-radius: 5px;
 }
 
-#addUser ul li:not(#submit) {
+#seasons-add ul,
+#seasons-page-edit #edit-season ul{
+    list-style: none;
+    padding: 15px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+#addUser ul li:not(#submit),
+#seasons-add ul li:not(#submit),
+#seasons-page-edit #edit-season ul li:not(#submit){
     display: grid;
     row-gap: 3px;
     margin-bottom: 5px;
 }
 
-#addUser ul li:not(#submit) label{
+#addUser ul li:not(#submit) label,
+#seasons-add ul li:not(#submit) label,
+#seasons-page-edit #edit-season ul li:not(#submit) label{
     font-size: 15px;
     color: var(--color3);
 }
 
-#addUser ul li:not(#submit) input {
+#addUser ul li:not(#submit) input,
+#seasons-add ul li:not(#submit) input,
+#seasons-page-edit #edit-season ul li:not(#submit) input{
     padding: 7px;
     font-size: 14px;
     color: var(--color3);
@@ -242,11 +306,16 @@ header #title {
     background-color: transparent;
 }
 
-#addUser ul li#submit {
+#addUser ul li#submit,
+#seasons-add ul li#submit,
+#seasons-page-edit #edit-season ul li#submit{
     text-align: end;
 }
 
-#addUser ul li#submit button {
+#addUser ul li#submit button,
+#seasons-page #add-season,
+#seasons-add ul li#submit button,
+#seasons-page-edit #edit-season ul li#submit button{
     background-color: var(--color1);
     border: 1px solid var(--color1);
     border-radius: 5px;
@@ -254,4 +323,86 @@ header #title {
     padding: 5px;
     cursor: pointer;
     margin-top: 10px;
+}
+
+#seasons-page #add-season {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#seasons-page #add-season:hover,
+#seasons-page-edit #edit-season ul li#submit button:hover {
+    background-color: var(--color8);
+    border-color: var(--color8);
+}
+
+#seasons-page-edit #pages-actions {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#seasons-page-edit #pages-actions #go-back {
+    padding: 6px 8px;
+    background-color: var(--color1);
+    color: var(--white);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#seasons-page-edit #pages-actions #go-back:hover {
+    background-color: var(--color8);
+    border-color: var(--color8);
+}
+
+#seasons-page-edit #edit-season {
+    background-color: var(--color5);
+    border-radius: 5px;
+}
+
+#seasons-page-edit #content-page {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 15px;
+    padding: 0 15px;
+}
+
+#seasons-page-edit #modified-at{
+    color: var(--color3);
+    font-size: 13px;
+    margin: 0;
+    padding: 0 0 10px 10px;
+}
+
+#seasons-page-edit #title-bloc {
+    color: var(--color3);
+    font-size: 15px;
+    margin: 0;
+}
+
+#seasons-page-edit #header-bloc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#seasons-page-edit #affect-anime {
+    background-color: var(--color5);
+    border-radius: 5px;
+}
+
+#seasons-page-edit #header-bloc #add-anime-to-season {
+    padding: 5px 7px;
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+#seasons-page-edit #header-bloc #add-anime-to-season:hover {
+    background-color: var(--color8);
+    border-color: var(--color8);
 }

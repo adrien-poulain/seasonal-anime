@@ -22,9 +22,6 @@ class Seasons
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $start = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $end = null;
-
     #[ORM\OneToMany(targetEntity: Animes::class, mappedBy: 'season')]
     private Collection $animes_list;
 
@@ -61,18 +58,6 @@ class Seasons
     public function setStart(\DateTimeInterface $start): static
     {
         $this->start = $start;
-
-        return $this;
-    }
-
-    public function getEnd(): ?\DateTimeInterface
-    {
-        return $this->end;
-    }
-
-    public function setEnd(\DateTimeInterface $end): static
-    {
-        $this->end = $end;
 
         return $this;
     }

@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div id="seasons-page-edit">
+        <div id="pages-actions">
+            <a id="go-back" href="{{ path('admin_seasons') }}"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div id="content-page">
+            <form id="edit-season" method="POST">
+                <div id="header-bloc">
+                    <p id="title-bloc"><i class="fa-brands fa-canadian-maple-leaf"></i> Information saison</p>
+                </div>
+                <ul>
+                    <li>
+                        <label class="required" for="libelle">Intitulé:</label>
+                        <input type="text" id="libelle" name="libelle" value="{{ season.libelle }}" placeholder="Votre intitulé ..." required/>
+                    </li>
+                    <li>
+                        <label class="required" for="start">Date de début:</label>
+                        <input type="date" id="start" value="{{ season.start|date('Y-m-d') }}" name="start" required/>
+                    </li>
+                    <li id="submit">
+                        <button type="submit">Modifier</button>
+                    </li>
+                </ul>
+                <p id="modified-at">Dernière modification : {{ season.updatedAt|date('d/m/Y H:i') }}</p>
+            </form>
+            <div id="affect-anime">
+                <div id="header-bloc">
+                    <p id="title-bloc"><i class="fa-solid fa-film"></i> Anime de la saison</p>
+                    <button id="add-anime-to-season" hx-get="{{ path('admin_seasons_add_anime', {'seasonId' : season.id}) }}" hx-target="#modal-place"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Seasons;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<Seasons>
@@ -16,9 +17,22 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SeasonsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Seasons::class);
+        $this->entityManager = $entityManager;
+    }
+
+    public function save(Seasons $entity)
+    {
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+    }
+
+    public function remove(Seasons $entity)
+    {
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
     }
 
 //    /**
