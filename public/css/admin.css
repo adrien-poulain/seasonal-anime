@@ -1,5 +1,6 @@
 @import url('./colors.css');
 @import url('./import/font-awesome-icons.min.css');
+@import url('./import/multi-select.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 * {
@@ -153,6 +154,7 @@ header #title {
     border: 4px solid var(--color1);
     border-radius: 5px;
     height: 100%;
+    
 }
 
 #stats #currentSeason > div > *:last-child,
@@ -174,6 +176,7 @@ header #title {
     margin: 15px;
     border: 1px solid var(--color4);
     border-radius: 5px;
+    grid-template-rows: minmax(35px,50px);
 }
 
 #seasons-page #table {
@@ -182,6 +185,7 @@ header #title {
 
 #table #table-content #empty-table {
     border-right: none;
+    padding: 10px 0;
 }
 
 #table #table-header,
@@ -208,6 +212,22 @@ header #title {
         minmax(100px,150px);
 }
 
+#animes-page #table {
+    width: auto;
+}
+
+#animes-page #table #table-header,
+#animes-page #table #table-row {
+    grid-template-columns: 
+        minmax(100px, 1fr)
+        minmax(100px, 1fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr)
+        minmax(100px, 1fr)
+        minmax(100px, 1fr)
+        minmax(100px, 150px);
+}
+
 #table #table-header {
     background-color: var(--color1);
 }
@@ -218,10 +238,15 @@ header #title {
 
 #table > div p {
     margin: 0;
-    padding: 10px;
+    padding: 0 10px;
     text-align: center;
     color: var(--color3);
     border-right: 1px solid var(--color4);
+    height: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #table > div:last-child,
@@ -235,6 +260,7 @@ header #title {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 35px;
 }
 
 #table #table-row #row-actions button,
@@ -273,7 +299,9 @@ header #title {
 }
 
 #seasons-add ul,
-#seasons-page-edit #edit-season ul{
+#seasons-page-edit #edit-season ul,
+#animes-add-page #infos-anime ul,
+#animes-edit-page #infos-anime ul{
     list-style: none;
     padding: 15px;
     margin: 0;
@@ -282,7 +310,9 @@ header #title {
 
 #addUser ul li:not(#submit),
 #seasons-add ul li:not(#submit),
-#seasons-page-edit #edit-season ul li:not(#submit){
+#seasons-page-edit #edit-season ul li:not(#submit),
+#animes-add-page #infos-anime ul li:not(#submit),
+#animes-edit-page #infos-anime ul li:not(#submit){
     display: grid;
     row-gap: 3px;
     margin-bottom: 5px;
@@ -290,32 +320,46 @@ header #title {
 
 #addUser ul li:not(#submit) label,
 #seasons-add ul li:not(#submit) label,
-#seasons-page-edit #edit-season ul li:not(#submit) label{
+#seasons-page-edit #edit-season ul li:not(#submit) label,
+#animes-add-page #infos-anime ul li:not(#submit) label,
+#animes-edit-page #infos-anime ul li:not(#submit) label{
     font-size: 15px;
     color: var(--color3);
 }
 
 #addUser ul li:not(#submit) input,
 #seasons-add ul li:not(#submit) input,
-#seasons-page-edit #edit-season ul li:not(#submit) input{
+#seasons-page-edit #edit-season ul li:not(#submit) input,
+#animes-add-page #infos-anime ul li:not(#submit) input,
+#animes-add-page #infos-anime ul li:not(#submit) textarea,
+#animes-add-page #infos-anime ul li:not(#submit) select,
+#animes-edit-page #infos-anime ul li:not(#submit) select,
+#animes-edit-page #infos-anime ul li:not(#submit) textarea,
+#animes-edit-page #infos-anime ul li:not(#submit) input{
     padding: 7px;
     font-size: 14px;
     color: var(--color3);
     border: 1px solid var(--color4);
     border-radius: 5px;
     background-color: transparent;
+    resize: vertical;
 }
 
 #addUser ul li#submit,
 #seasons-add ul li#submit,
-#seasons-page-edit #edit-season ul li#submit{
+#seasons-page-edit #edit-season ul li#submit,
+#animes-add-page #infos-anime ul li#submit,
+#animes-edit-page #infos-anime ul li#submit{
     text-align: end;
 }
 
 #addUser ul li#submit button,
 #seasons-page #add-season,
 #seasons-add ul li#submit button,
-#seasons-page-edit #edit-season ul li#submit button{
+#seasons-page-edit #edit-season ul li#submit button,
+#animes-add-page #infos-anime ul li#submit button,
+#animes-edit-page #infos-anime ul li#submit button,
+#add-animes-season button[type="submit"]{
     background-color: var(--color1);
     border: 1px solid var(--color1);
     border-radius: 5px;
@@ -325,24 +369,52 @@ header #title {
     margin-top: 10px;
 }
 
+#animes-add-page #infos-anime ul li#thumbnail,
+#animes-edit-page #infos-anime ul li#thumbnail {
+    margin-bottom: 20px;
+}
+
+#animes-add-page #infos-anime ul li#thumbnail label span,
+#animes-edit-page #infos-anime ul li#thumbnail label span{
+    font-size: 13px;
+}
+
+#animes-page #add-anime {
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    color: var(--white);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#animes-page {
+    padding: 15px 0;
+}
+
+#animes-page #add-anime,
 #seasons-page #add-season {
     margin-left: 15px;
     margin-top: 15px;
 }
 
 #seasons-page #add-season:hover,
-#seasons-page-edit #edit-season ul li#submit button:hover {
+#animes-page #add-anime:hover,
+#seasons-page-edit #edit-season ul li#submit button:hover,
+#add-animes-season button[type="submit"]:hover {
     background-color: var(--color8);
     border-color: var(--color8);
 }
 
-#seasons-page-edit #pages-actions {
+#pages-actions {
     margin-left: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-#seasons-page-edit #pages-actions #go-back {
+#pages-actions #go-back {
     padding: 6px 8px;
     background-color: var(--color1);
     color: var(--white);
@@ -351,17 +423,25 @@ header #title {
     cursor: pointer;
 }
 
-#seasons-page-edit #pages-actions #go-back:hover {
+#pages-actions #go-back:hover {
     background-color: var(--color8);
     border-color: var(--color8);
 }
 
-#seasons-page-edit #edit-season {
+#seasons-page-edit #edit-season,
+#animes-add-page #infos-anime,
+#animes-edit-page #infos-anime,
+#animes-edit-page #current-image {
     background-color: var(--color5);
     border-radius: 5px;
 }
 
-#seasons-page-edit #content-page {
+#animes-add-page #infos-anime {
+    margin: 0 15px;
+}
+
+#seasons-page-edit #content-page,
+#animes-edit-page #content-page {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 15px;
@@ -388,6 +468,13 @@ header #title {
     padding: 10px;
 }
 
+#header-bloc p {
+    margin: 0;
+    color: var(--color3);
+    /* padding: 10px; */
+    font-size: 15px;
+}
+
 #seasons-page-edit #affect-anime {
     background-color: var(--color5);
     border-radius: 5px;
@@ -405,4 +492,51 @@ header #title {
 #seasons-page-edit #header-bloc #add-anime-to-season:hover {
     background-color: var(--color8);
     border-color: var(--color8);
+}
+
+
+.required::after {
+    content: "*";
+    color: var(--red);
+}
+
+#current-image #anime-picture {
+    max-width: 350px;
+}
+
+
+#seasons-page-edit #affect-anime #content-bloc #season-anime {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--color2);
+}
+
+#seasons-page-edit #affect-anime #content-bloc #season-anime:first-child {
+    border-top: 1px solid var(--color2);
+}
+
+
+#seasons-page-edit #affect-anime #content-bloc #season-anime a#title-anime {
+    font-size: 14px;
+    color: var(--color3);
+}
+
+#seasons-page-edit #affect-anime #content-bloc #season-anime a#delete-anime-season {
+    font-size: 15px;
+    padding: 4px 6px;
+    background-color: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    color: var(--white);
+}
+
+#add-animes-season {
+    display: grid;
+    padding: 15px;
+}
+
+#add-animes-season select {
+    width: 150px;
 }

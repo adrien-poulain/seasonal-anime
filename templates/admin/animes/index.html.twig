@@ -1,4 +1,37 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
+    <div id="animes-page">
+        <a id="add-anime" href="{{ path('admin_add_animes') }}">Nouvelle anime</a>
+        <div id="table">
+            <div id="table-header">
+                <p>Intitulé</p>
+                <p>Saison</p>
+                <p>Jour de publication</p>
+                <p>Heure de publication</p>
+                <p>Date de début</p>
+                <p>Nombre d'épisodes</p>
+                <p>Actions</p>
+            </div>
+            <div id="table-content">
+                {% if animes is defined and animes|length > 0 %}
+                    {% for anime in animes %}
+                        <div id="table-row">
+                            <p>{{ anime.title }}</p>
+                            <p>{{ anime.season ? anime.season.libelle : '-' }}</p>
+                            <p>{{ anime.publishDay }}</p>
+                            <p>{{ anime.publishTime|date('H:i') }}</p>
+                            <p>{{ anime.publishStart|date('d/m/Y') }}</p>
+                            <p>{{ anime.nbEpisodes }}</p>
+                            <div id="row-actions">
+                                <a href="{{ path('admin_animes_edit' , {'animeId' : anime.animeId}) }}" id="edit-season"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p id="empty-table">Aucun animé</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

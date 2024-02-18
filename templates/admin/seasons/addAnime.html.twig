@@ -2,10 +2,22 @@
 {% block modalcss %}
     <link rel='stylesheet' href="{{ asset('css/admin.css') }}" >
 {% endblock %}
+{% block modaljs %}
+    <script type='text/javascript' src="{{ asset('js/import/select2.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}  
 {% block modalheader %}
     <i class="fa-solid fa-plus"></i>
     <p id="title">Ajout d'anime(s)</p>
 {% endblock %}
 {% block modalcontent %}
+    <form id="add-animes-season" method="POST" action="{{ path('admin_seasons_add_anime', {'seasonId' : season.id}) }}">
+        <select class="multipleselect" name="animes[]" multiple="multiple">
+            {% for anime in availableAnime %}
+                <option value="{{ anime.animeId }}">{{ anime.title }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Ajouter</button>
+    </form>
 {% endblock %}
         

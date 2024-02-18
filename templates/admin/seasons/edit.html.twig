@@ -30,6 +30,14 @@
                     <p id="title-bloc"><i class="fa-solid fa-film"></i> Anime de la saison</p>
                     <button id="add-anime-to-season" hx-get="{{ path('admin_seasons_add_anime', {'seasonId' : season.id}) }}" hx-target="#modal-place"><i class="fa-solid fa-plus"></i></button>
                 </div>
+                <div id="content-bloc">
+                    {% for anime in animes %}
+                        <div id="season-anime">
+                            <a id="title-anime" href="{{ path('admin_animes_edit', {'animeId' : anime.animeId}) }}">{{ anime.title }}</a>
+                            <a id="delete-anime-season" href="{{ path('admin_seasons_delete_anime', {'seasonId' : season.id, 'animeId' : anime.animeId}) }}"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

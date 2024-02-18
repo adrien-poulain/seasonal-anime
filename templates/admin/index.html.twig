@@ -8,13 +8,14 @@
         <div id="currentSeason">
             <div id="seasonOnGoing">
                 <p id="title"><i class="fa-brands fa-canadian-maple-leaf"></i> Saison actuelle</p>
-                <p>Hiver</p>
+                <p>{{ currentSeason.season is defined and currentSeason.season ? currentSeason.season.libelle : 'Aucune' }}</p>
             </div>
             <div id="nbAnimesSeason">
                 <p id="title"><i class="fa-solid fa-film"></i> Nombre d'anime cette saison</p>
-                <p>12</p>
+                <p>{{ currentSeason.animeCount is defined and currentSeason.animeCount ? currentSeason.animeCount : '0' }}</p>
             </div>
         </div>
+        
         <div id="counting">
             <div id="nbAnimesTotal">
                 <p id="title"><i class="fa-solid fa-film"></i> Nombre total Animes</p>
@@ -22,11 +23,11 @@
             </div>
             <div id="nbSeasonPassed">
                 <p id="title"><i class="fa-brands fa-canadian-maple-leaf"></i> Nombre de saison passé</p>
-                <p>6</p>
+                <p>{{ nbPassedSeasons }}</p>
             </div>
             <div id="nbSeasonComming">
                 <p id="title"><i class="fa-brands fa-canadian-maple-leaf"></i> Nombre de saison à venir</p>
-                <p>2</p>
+                <p>{{ nbUpcommingSeasons }}</p>
             </div>
         </div>
     </div>

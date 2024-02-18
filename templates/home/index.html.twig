@@ -1,4 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="home-content-page">
+        <p id="title">PLANNING ANIMES</p>
+        {% dump(sortedAnimes) %}
+        <div id="repart-by-day">
+            {% set days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'] %}
+            {% for day in days %}
+                {% if sortedAnimes[day] is defined and sortedAnimes[day]|length > 0 %}
+                    <div id="{{ day|lower }}">
+                        <p id="title-section">{{ day }}:</p>
+                        <div id="content-by-day">
+                            {% for item in sortedAnimes[day] %}
+                                <div id="card-anime">
+                                    <div id="card-image">
+                                        <img src="{{ asset('uploads/' ~ item.thumbnail) }}" width="80" />
+                                    </div>
+                                    <div id="description">
+                                        <p>{{ item.title }}</p>
+                                        <p>{{ 'EP' ~ item.weekEpisodeNumber ~ ' à ' ~ item.publishTime|date('H:i') }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

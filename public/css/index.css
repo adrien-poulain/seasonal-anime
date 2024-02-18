@@ -76,3 +76,49 @@ header #logged #access-dashboard {
     content: "*";
     color: var(--red);
 }
+
+#home-content-page #title {
+    font-size: 25px;
+    text-align: center;
+    color: var(--color3);
+}
+
+#home-content-page #repart-by-day {
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#home-content-page #content-by-day {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 140px);
+    grid-template-rows: repeat(auto-fit, 170px);
+    column-gap: 15px;
+    row-gap: 15px;
+}
+
+#home-content-page #repart-by-day #title-section {
+    font-size: 20px;
+    color: var(--color3);
+
+}
+
+#home-content-page #content-by-day #card-anime {
+    background-color: var(--color1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#home-content-page #content-by-day #card-anime #card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#home-content-page #content-by-day #card-anime p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: var(--color3);
+    text-align: center;
+}

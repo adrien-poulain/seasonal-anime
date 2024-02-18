@@ -36,7 +36,7 @@ class Animes
     private ?int $nb_episodes = null;
 
     #[ORM\ManyToOne(inversedBy: 'animes_list')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Seasons $season = null;
 
     public function getAnimeId(): ?int

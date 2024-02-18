@@ -9,6 +9,7 @@
         <script type='text/javascript' src="{{ asset('js/import/font-awesome-icons.min.js') }}"></script>
         <script type='text/javascript' src="{{ asset('js/import/htmx.min.js') }}"></script>
         <script type='text/javascript' src="{{ asset('js/import/jQuery.min.js') }}"></script>
+        <script type='text/javascript' src="{{ asset('js/admin.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </head>
     <body>
@@ -29,7 +30,7 @@
                     <a class="{{(app.request.attributes.get('_route') == 'admin_panel') ? 'active' : ''}}" href="{{ path('admin_panel') }}"><i class="fa-solid fa-house"></i> Accueil</a>
                     <a class="{{(app.request.attributes.get('_route') == 'admin_users') ? 'active' : ''}}" href="{{ path('admin_users') }}"><i class="fa-solid fa-users"></i> Administrateurs</a>
                     <a class="{{(app.request.attributes.get('_route') in ['admin_seasons', 'admin_seasons_edit']) ? 'active' : ''}}" href="{{ path('admin_seasons') }}"><i class="fa-brands fa-canadian-maple-leaf"></i> Saisons</a>
-                    <a class="{{(app.request.attributes.get('_route') == 'admin_animes') ? 'active' : ''}}" href="{{ path('admin_animes') }}"><i class="fa-solid fa-film"></i> Animes</a>
+                    <a class="{{(app.request.attributes.get('_route') in ['admin_animes', 'admin_add_animes', 'admin_animes_edit']) ? 'active' : ''}}" href="{{ path('admin_animes') }}"><i class="fa-solid fa-film"></i> Animes</a>
                 </div>
                 <div id="menu-content">
                 {% block body %}{% endblock %}

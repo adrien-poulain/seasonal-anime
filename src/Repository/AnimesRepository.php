@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Animes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<Animes>
@@ -16,9 +17,16 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AnimesRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Animes::class);
+        $this->entityManager = $entityManager;
+    }
+
+    public function save(Animes $entity)
+    {
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
     }
     
     public function countAll(): int
