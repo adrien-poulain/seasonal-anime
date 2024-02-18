@@ -57,6 +57,10 @@ header #logged #access-dashboard {
     margin-right: 10px;
 }
 
+#login-admin {
+    margin-right: 15px;
+}
+
 #login-admin, #logout-admin, #access-dashboard {
     text-decoration: none;
     color: var(--color3);
