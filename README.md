@@ -27,6 +27,7 @@ composer update
 symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate
 ```
+(Un utilisateur sera créé par défaut pour vous permettre d'accéder à l'interface ADMIN. Vois les identifiants : username = Admin / password = 1234567890)
 - Vous aurez ainsi les tables ainsi que la base qui seront générées dans le serveur MySQL
 - Pour finir vous devrez une fois de plus dans le terminal dans le dossier du projet taper la commande pour démarrer le serveur symfony : 
 ```bash
